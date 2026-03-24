@@ -31,6 +31,8 @@ export async function addUser(data: Omit<User, 'id'>): Promise<User> {
     const newUser = { ...data, id: newId }
     const validatedUser = userSchema.parse(newUser)
     users.push(validatedUser)
+    revalidatePath('/')
+    revalidatePath('/directory')
     return validatedUser
 }
 
@@ -41,7 +43,8 @@ export async function deleteUser(id: string): Promise<void> {
     }
     users.splice(index, 1)
     console.log(`User with id ${id} has been deleted.`)
-    revalidatePath('/') // Revalidate the page or component path
+    revalidatePath('/')
+    revalidatePath('/directory')
 
 }
 
@@ -57,9 +60,14 @@ export async function updateUser(id: string, data: Partial<Omit<User, 'id'>>): P
 
     users[index] = validatedUser
     console.log(`User with id ${id} has been updated.`)
-    revalidatePath('/') // Revalidate the page or component path
+    revalidatePath('/')
+    revalidatePath('/directory')
 
     return validatedUser
+}
+
+export async function getAllUsers(): Promise<User[]> {
+    return [...users].sort((a, b) => a.name.localeCompare(b.name))
 }
 
 export const getUserById = cache(async (id: string) => {

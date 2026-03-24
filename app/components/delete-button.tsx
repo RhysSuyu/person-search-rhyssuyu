@@ -4,12 +4,16 @@ import { Button } from "@/components/ui/button"
 import { Trash } from 'lucide-react'
 import { deleteUser } from '@/app/actions/actions'
 import { toast } from "@/hooks/use-toast"
+import { useRouter } from 'next/navigation'
 
 export default function DeleteButton({ userId }: { userId: string }) {
+  const router = useRouter()
+
   const handleDelete = async () => {
     try {
       console.log('DeleteButton: Attempting to delete user with ID', userId)
       await deleteUser(userId)
+      router.refresh()
       toast({
         title: "User Deleted",
         description: `A user with the ID ${userId} has been deleted.`,

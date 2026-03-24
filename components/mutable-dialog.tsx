@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import { toast } from "../hooks/use-toast"; // Using shadcn toast hook for notifications.
 import { ZodType } from 'zod';
+import { useRouter } from 'next/navigation';
 
 export interface ActionState <T>{
     success: boolean;
@@ -47,6 +48,7 @@ export default function MutableDialog<T extends FieldValues>({
   submitButtonLabel = defaultValues ? 'Save' : 'Add',
 }: GenericDialogProps<T>) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const form = useForm<T>({
     resolver: async (values) => {
@@ -90,6 +92,7 @@ export default function MutableDialog<T extends FieldValues>({
     if (actions.success) {
       const toastMessage = actions.message;
       console.log('toastMessage:', toastMessage);
+      router.refresh();
       toast({
         title: "Success",
         description: toastMessage,
