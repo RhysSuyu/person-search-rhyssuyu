@@ -1,5 +1,6 @@
 import { getAllUsers } from '@/app/actions/actions'
 import { UserEditDialog } from '@/app/components/user-edit-dialog'
+import { UserDialog } from '@/app/components/user-dialog'
 import DeleteButton from '@/app/components/delete-button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -8,7 +9,10 @@ export default async function DirectoryPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-6 text-3xl font-bold">Directory</h1>
+      <div className="mb-6 flex items-center justify-between gap-3">
+        <h1 className="text-3xl font-bold">Directory</h1>
+        <UserDialog />
+      </div>
 
       <Card>
         <CardHeader>
