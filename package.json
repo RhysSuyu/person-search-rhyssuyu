@@ -2,10 +2,11 @@
   "name": "person-search-n15",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next dev",
-    "build": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next build",
-    "start": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint .",
     "mcp:person": "node mcp-server/person-crud-server.mjs"
   },

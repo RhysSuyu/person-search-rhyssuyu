@@ -245,3 +245,28 @@ pnpm lint
 - [Next.js Codemods](https://nextjs.org/docs/app/guides/upgrading/codemods)
 - [React 19.2 Announcement](https://react.dev/blog/2025/10/01/react-19-2)
 - [Turbopack Documentation](https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack)
+
+## Localhost 3000 Recovery (Dev)
+
+When `pnpm dev` fails to acquire `.next/dev/lock` or switches to another port because a stale process is still running, use this sequence:
+
+```bash
+# 1) Stop stale Next.js dev processes
+Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'node|next' -and $_.CommandLine -match 'next dev' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+
+# 2) Remove stale lock file if present
+if (Test-Path .next/dev/lock) { Remove-Item .next/dev/lock -Force }
+
+# 3) Start dev server with pnpm
+pnpm dev
+```
+
+Expected startup output:
+
+- `Local: http://localhost:3000`
+- `Ready`
+
+Notes:
+
+- Use `pnpm` commands for this repository.
+- The `baseline-browser-mapping` age message is a warning from an upstream dependency and does not block startup.
