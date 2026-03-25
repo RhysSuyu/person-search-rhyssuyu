@@ -6,7 +6,6 @@ import { revalidatePath } from 'next/cache'
 import { User, userFormSchema, userSchema } from './schemas'
 import { cache } from 'react'
 import { prisma } from '@/lib/prisma'
-import { Prisma } from '@prisma/client'
 import { ZodError } from 'zod'
 
 function toActionErrorMessage(error: unknown, fallback: string): string {
@@ -14,10 +13,17 @@ function toActionErrorMessage(error: unknown, fallback: string): string {
         return error.issues[0]?.message ?? fallback
     }
 
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        if (error.code === 'P2002') {
-            const target = Array.isArray(error.meta?.target)
-                ? (error.meta?.target as string[])
+    // Check if it's a Prisma error by checking for specific properties
+    if (
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        'meta' in error
+    ) {
+        const prismaError = error as any
+        if (prismaError.code === 'P2002') {
+            const target = Array.isArray(prismaError.meta?.target)
+                ? (prismaError.meta?.target as string[])
                 : []
 
             if (target.includes('email')) {
@@ -27,7 +33,7 @@ function toActionErrorMessage(error: unknown, fallback: string): string {
             return 'A record with these details already exists.'
         }
 
-        if (error.code === 'P2025') {
+        if (prismaError.code === 'P2025') {
             return 'The user was not found.'
         }
     }
