@@ -6,10 +6,13 @@
     "dev": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next dev",
     "build": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next build",
     "start": "cross-env BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "mcp:person": "node mcp-server/person-crud-server.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
@@ -42,12 +45,14 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
+    "dotenv": "^17.3.1",
     "embla-carousel-react": "^8.5.1",
     "input-otp": "^1.4.1",
     "lucide-react": "^0.469.0",
     "next": "16.0.10",
     "next-auth": "5.0.0-beta.30",
     "next-themes": "^0.4.4",
+    "pg": "^8.20.0",
     "react": "19.2.0",
     "react-day-picker": "^9.11.2",
     "react-dom": "19.2.0",
@@ -64,6 +69,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/pg": "^8.20.0",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "baseline-browser-mapping": "^2.10.10",
@@ -79,5 +85,4 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3"
   }
-
 }

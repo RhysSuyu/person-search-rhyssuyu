@@ -21,6 +21,12 @@ export default function Footer() {
           <Link href="/database" className="hover:text-primary">
             Database
           </Link>
+          <Link href="/mcp-setup" className="hover:text-primary">
+            MCP Setup
+          </Link>
+          <Link href="/mcp-demo" className="hover:text-primary">
+            MCP Demo
+          </Link>
         </nav>
         <p>&copy; {currentYear} Rhys Suyu. All rights reserved.</p>
       </div>

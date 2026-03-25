@@ -7,11 +7,11 @@ export default function GitHubPage() {
       <h1 className="mb-6 text-3xl font-bold">GitHub Repository</h1>
       <Card>
         <CardHeader>
-          <CardTitle>Public Source Code</CardTitle>
+          <CardTitle>Person App + MCP Server Source Code</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="mb-3 text-muted-foreground">
-            This project is publicly available at the repository below.
+            This repository contains both the Person app and the MCP CRUD server.
           </p>
           <Link
             href="https://github.com/RhysSuyu/person-search-rhyssuyu"
@@ -21,6 +21,9 @@ export default function GitHubPage() {
           >
             https://github.com/RhysSuyu/person-search-rhyssuyu
           </Link>
+          <p className="mt-3 text-sm text-muted-foreground">
+            MCP server file: <code>mcp-server/person-crud-server.mjs</code>
+          </p>
         </CardContent>
       </Card>
     </div>

@@ -18,6 +18,15 @@ export default function AboutPage() {
             The main interface is on <code>/</code> and <code>/directory</code>, where users can create, read, update,
             and delete person records.
           </p>
+          <p>
+            Week 4 adds an MCP server at <code>mcp-server/person-crud-server.mjs</code>. Claude Desktop can connect
+            through stdio and call <code>person_list</code>, <code>person_create</code>, <code>person_update</code>,
+            and <code>person_delete</code> tools directly against the same PostgreSQL data.
+          </p>
+          <p>
+            The in-app MCP test harness on <code>/mcp-demo</code> demonstrates live MCP-style CRUD calls and responses
+            for evaluator testing.
+          </p>
         </CardContent>
       </Card>
 
@@ -28,6 +37,7 @@ export default function AboutPage() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>Next.js 16 + React 19 + TypeScript</p>
           <p>Prisma 7 ORM + PostgreSQL database</p>
+          <p>Model Context Protocol server with <code>@modelcontextprotocol/sdk</code></p>
           <p>Tailwind CSS + shadcn/ui components</p>
           <p>Zod + React Hook Form for validation and form handling</p>
         </CardContent>
