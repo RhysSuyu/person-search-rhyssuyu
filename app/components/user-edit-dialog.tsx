@@ -15,7 +15,7 @@ export function UserEditDialog({ user }: UserEditDialogProps) {
       const updatedUser = await updateUser(user.id, data)
       return {
         success: true,
-        message: `User ${updatedUser.name} updated successfully`,
+        message: `User ${updatedUser.firstName} ${updatedUser.lastName} updated successfully`,
         data: updatedUser,
       }
     } catch (error) {
@@ -32,13 +32,15 @@ export function UserEditDialog({ user }: UserEditDialogProps) {
       FormComponent={UserForm}
       action={handleEditUser}
       triggerButtonLabel="Edit"
-      editDialogTitle={`Edit ${user.name}`}
-      dialogDescription={`Update the details of ${user.name} below.`}
+      editDialogTitle={`Edit ${user.firstName} ${user.lastName}`}
+      dialogDescription={`Update the details of ${user.firstName} ${user.lastName} below.`}
       submitButtonLabel="Save Changes"
       defaultValues={{
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
-        phoneNumber: user.phoneNumber,
+        age: user.age,
+        city: user.city,
       }}
     />
   )

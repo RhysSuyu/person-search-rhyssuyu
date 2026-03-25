@@ -23,15 +23,35 @@ export function UserForm({ form }: FormComponentProps) {
     <Form {...form}>
       <FormField
         control={form.control}
-        name="name"
+        name="firstName"
         render={({ field, fieldState }) => (
           <FormItem>
-            <FormLabel>Name</FormLabel>
+            <FormLabel>First Name</FormLabel>
             <FormControl>
-              <Input placeholder="John Doe" {...field} />
+              <Input placeholder="John" {...field} />
             </FormControl>
             <FormDescription>
-              Enter full name.
+              Enter first name.
+            </FormDescription>
+            {fieldState.error && (
+                            <p className="text-red-600 text-sm mt-1">
+                                {String(fieldState.error) || ''}
+                            </p>
+                        ) }
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="lastName"
+        render={({ field, fieldState }) => (
+          <FormItem>
+            <FormLabel>Last Name</FormLabel>
+            <FormControl>
+              <Input placeholder="Doe" {...field} />
+            </FormControl>
+            <FormDescription>
+              Enter last name.
             </FormDescription>
             {fieldState.error && (
                             <p className="text-red-600 text-sm mt-1">
@@ -63,15 +83,40 @@ export function UserForm({ form }: FormComponentProps) {
       />
       <FormField
         control={form.control}
-        name="phoneNumber"
+        name="age"
         render={({ field, fieldState }) => (
           <FormItem>
-            <FormLabel>Phone Number</FormLabel>
+            <FormLabel>Age</FormLabel>
             <FormControl>
-              <Input placeholder="04xxxxxxxx" {...field} />
+              <Input
+                type="number"
+                placeholder="29"
+                value={field.value ?? ''}
+                onChange={(event) => field.onChange(event.target.value)}
+              />
             </FormControl>
             <FormDescription>
-              Enter phone number in Australian phone number format.
+              Enter age (optional).
+            </FormDescription>
+            {fieldState.error && (
+                            <p className="text-red-600 text-sm mt-1">
+                                {String(fieldState.error) || ''}
+                            </p>
+                        ) }
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="city"
+        render={({ field, fieldState }) => (
+          <FormItem>
+            <FormLabel>City</FormLabel>
+            <FormControl>
+              <Input placeholder="Sydney" value={field.value ?? ''} onChange={field.onChange} />
+            </FormControl>
+            <FormDescription>
+              Enter city (optional).
             </FormDescription>
             {fieldState.error && (
                             <p className="text-red-600 text-sm mt-1">

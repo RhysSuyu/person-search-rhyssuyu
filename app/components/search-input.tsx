@@ -9,7 +9,7 @@ export default function SearchInput() {
         const users = await searchUsers(inputValue);
         return users.map(user => ({
             value: user.id,
-            label: user.name,
+            label: `${user.firstName} ${user.lastName}`,
         }));
     };
 

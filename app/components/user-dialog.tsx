@@ -14,7 +14,7 @@ export function UserDialog() {
       const newUser = await addUser(data)
       return {
         success: true,
-        message: `User ${newUser.name} added successfully`,
+        message: `User ${newUser.firstName} ${newUser.lastName} added successfully`,
         data: newUser
       }
     } catch (error) {
@@ -34,7 +34,7 @@ export function UserDialog() {
       addDialogTitle="Add New User"
       dialogDescription="Fill out the form below to add a new user."
       submitButtonLabel="Save"
-      defaultValues={{ name: '', email: '', phoneNumber: '' }} // Default empty values
+      defaultValues={{ firstName: '', lastName: '', email: '', age: null, city: null }}
     />
   )
 }

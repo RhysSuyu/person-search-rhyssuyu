@@ -14,26 +14,28 @@ interface UserCardProps {
 console.log("UserCard module loaded");
 
 export default function UserCard({ user }: UserCardProps) {
-  if (!user || !user.name) {
+  if (!user || !user.firstName || !user.lastName) {
     console.error("UserCard: Invalid user object", user);
     return <p>Error: Invalid user data</p>;
   }
+
+  const fullName = `${user.firstName} ${user.lastName}`
 
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="w-16 h-16">
-          <AvatarFallback>{user.name.split(' ').map((n) => n[0]).join('')}</AvatarFallback>
+          <AvatarFallback>{`${user.firstName[0] ?? ''}${user.lastName[0] ?? ''}`}</AvatarFallback>
         </Avatar>
         <div className="flex flex-col">
-          <CardTitle className="text-2xl">{user.name}</CardTitle>
+          <CardTitle className="text-2xl">{fullName}</CardTitle>
           <Badge variant="secondary" className="w-fit mt-1">ID: {user.id}</Badge>
         </div>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="flex items-center gap-2">
           <Phone className="w-4 h-4 text-muted-foreground" />
-          <span>{user.phoneNumber}</span>
+          <span>{user.age ?? '-'} years old</span>
         </div>
         {user.email && (
           <div className="flex items-center gap-2">
@@ -41,6 +43,7 @@ export default function UserCard({ user }: UserCardProps) {
             <span>{user.email}</span>
           </div>
         )}
+        {user.city && <p className="text-sm text-muted-foreground">City: {user.city}</p>}
       </CardContent>
       <CardFooter className="flex justify-between items-center">
         <DeleteButton userId={user.id} />

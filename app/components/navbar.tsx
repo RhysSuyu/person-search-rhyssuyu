@@ -29,6 +29,12 @@ export default function Navbar() {
             <Link href="/directory" className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
               Directory
             </Link>
+            <Link href="/github" className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+              GitHub
+            </Link>
+            <Link href="/database" className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+              Database
+            </Link>
             <Button
               variant="ghost"
               size="icon"

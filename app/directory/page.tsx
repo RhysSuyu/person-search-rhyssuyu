@@ -4,6 +4,8 @@ import { UserDialog } from '@/app/components/user-dialog'
 import DeleteButton from '@/app/components/delete-button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+export const dynamic = 'force-dynamic'
+
 export default async function DirectoryPage() {
   const users = await getAllUsers()
 
@@ -29,8 +31,8 @@ export default async function DirectoryPage() {
                   className="flex flex-col gap-3 rounded-md border p-3 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
-                    <p className="font-medium">{user.name}</p>
-                    <p className="text-sm text-muted-foreground">{user.email || 'No email'} | {user.phoneNumber}</p>
+                    <p className="font-medium">{user.firstName} {user.lastName}</p>
+                    <p className="text-sm text-muted-foreground">{user.email || 'No email'} | Age: {user.age ?? '-'} | {user.city ?? 'No city'}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <UserEditDialog user={user} />

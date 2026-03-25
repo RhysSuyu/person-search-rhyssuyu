@@ -26,7 +26,7 @@ export default function SearchInput() {
         onSearch={handleSearch}
         onItemSelect={handleSelect}
         getItemId={(user) => user.id}
-        getItemLabel={(user) => user.name}
+        getItemLabel={(user) => `${user.firstName} ${user.lastName}`}
         placeholder="Search users..."
         noResultsText="No users found."
       />

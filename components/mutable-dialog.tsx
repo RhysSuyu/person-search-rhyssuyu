@@ -16,7 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { toast } from "../hooks/use-toast"; // Using shadcn toast hook for notifications.
-import { ZodType } from 'zod';
+import { ZodType, ZodTypeDef } from 'zod';
 import { useRouter } from 'next/navigation';
 
 export interface ActionState <T>{
@@ -25,7 +25,7 @@ export interface ActionState <T>{
     data?: T;
   }
 interface GenericDialogProps<T extends FieldValues> {
-  formSchema: ZodType<T>;
+  formSchema: ZodType<T, ZodTypeDef, unknown>;
   FormComponent: React.ComponentType<{ form: UseFormReturn<T> }>;
   action?: (data: T) => Promise<ActionState<T>>;
   triggerButtonLabel?: string;

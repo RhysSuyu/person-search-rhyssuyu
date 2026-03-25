@@ -15,6 +15,12 @@ export default function Footer() {
           <Link href="/directory" className="hover:text-primary">
             Directory
           </Link>
+          <Link href="/github" className="hover:text-primary">
+            GitHub
+          </Link>
+          <Link href="/database" className="hover:text-primary">
+            Database
+          </Link>
         </nav>
         <p>&copy; {currentYear} Rhys Suyu. All rights reserved.</p>
       </div>
