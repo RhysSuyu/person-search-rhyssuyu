@@ -20,7 +20,7 @@ export function UserDialog() {
     } catch (error) {
       return {
         success: false,
-        message: 'Failed to add user ' + (error instanceof Error ? error.message : 'Unknown error')
+        message: error instanceof Error ? error.message : 'Failed to add user.'
       }
     }
   }

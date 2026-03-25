@@ -270,3 +270,22 @@ Notes:
 
 - Use `pnpm` commands for this repository.
 - The `baseline-browser-mapping` age message is a warning from an upstream dependency and does not block startup.
+
+## MCP Server Setup Proof
+
+The Model Context Protocol (MCP) server integration with Claude Desktop is fully operational. Below are screenshots demonstrating the person-crud MCP server functionality:
+
+### Person Create
+![Person-crud create](../app/Person-crud.png)
+
+### Person Update
+![Person-crud update](../app/Person-crud%20update.png)
+
+### Person Delete
+![Person-crud delete](../app/Person-crud%20delete.png)
+
+These screenshots confirm that the MCP server is properly:
+- Connected to Claude Desktop
+- Communicating with the PostgreSQL database via Prisma
+- Executing CRUD operations (Create, Read, Update, Delete) successfully
+- Displaying results in the Claude interface
